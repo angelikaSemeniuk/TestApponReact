@@ -1,0 +1,61 @@
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header button {
+    padding: 10px;
+    border: 1px solid black;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 2px 5px grey;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    list-style: none;
+}
+
+.messageError {
+    display: none;
+    font-size: 30px;
+    text-align: center;
+    color: firebrick;
+}
+
+.list li {
+    border: 1px solid black;
+}
+
+.accordion-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.accordion-header i {
+    padding: 10px;
+}
+
+.accordion-body {
+    display: none;
+    border: 1px solid black;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+
+
+
+
