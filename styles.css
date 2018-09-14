@@ -15,8 +15,9 @@
 
 .list {
     display: flex;
+    margin: 0 150px;
+    padding: 50px 100px;
     flex-direction: column;
-    padding-left: 100px;
     list-style: none;
 }
 
@@ -28,6 +29,7 @@
 }
 
 .list li {
+    padding: 5px;
     border: 1px solid black;
 }
 

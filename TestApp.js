@@ -1,30 +1,52 @@
 import React from "react";
-import RequestComponent from "./RequestComponent";
-import ListComponent from "./ListComponent";
 
 export default class TestApp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {arrayOfTitels: []}
-        this.updateArrayOfTitels =  this.updateArrayOfTitels.bind(this);
+        this.url = 'https://content.guardianapis.com/search?api-key=64725228-5b31-4c1c-aba5-faa61edfb7be';
+        this.state = {
+            arrayOfArticles: [],
+            error: null
+        };
     }
 
-    updateArrayOfTitels (arrayOfTitels) {
-        this.setState ({arrayOfTitels: arrayOfTitels});
+    componentDidMount() {
+        fetch(this.url)
+            .then((response) => {
+                return response.json();
+            })
+            .then(
+                (data) => {
+                this.setState({
+                    arrayOfArticles: data.response.results
+                });
+            },
+                (error) => {
+                    this.setState({
+                        error: error
+                    });
+                }
+            )
     }
 
     render () {
-        return (
-            <div>
-                <div className="header">
-                    <h1>The Guardian News</h1>
+        if(this.state.error) {
+            return <div>Error: {this.state.error.message}</div>
+        } else {
+            return (
+                <div className="container">
+                    <div className="header">
+                        <h1>The Guardian News</h1>
+                    </div>
+                    <ul className="list">
+                        {this.state.arrayOfArticles.map((item,index) => (
+                            <li key={index}>
+                                {item.webTitle}
+                            </li>
+                            ))}
+                    </ul>
                 </div>
-                <RequestComponent
-                    arrayOfTitels={this.state.arrayOfTitels}
-                    updateArrayOfTitels={this.updateArrayOfTitels}
-                />
-                <ListComponent arrayOfTitels={this.state.arrayOfTitels}/>
-            </div>
-        );
+            );
+        }
     }
 }
