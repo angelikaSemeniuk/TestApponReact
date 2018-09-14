@@ -29,6 +29,10 @@ export default class TestApp extends React.Component {
             )
     }
 
+    handleRefreshClick () {
+        this.componentDidMount();
+    }
+
     render () {
         if(this.state.error) {
             return <div>Error: {this.state.error.message}</div>
@@ -37,6 +41,7 @@ export default class TestApp extends React.Component {
                 <div className="container">
                     <div className="header">
                         <h1>The Guardian News</h1>
+                        <button onClick={this.handleRefreshClick.bind(this)}>Refresh</button>
                     </div>
                     <ul className="list">
                         {this.state.arrayOfArticles.map((item,index) => (
