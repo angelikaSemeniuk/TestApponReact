@@ -1,4 +1,5 @@
 import React from "react";
+import LiComponent from "./LiComponent";
 
 export default class TestApp extends React.Component {
     constructor(props) {
@@ -38,18 +39,18 @@ export default class TestApp extends React.Component {
             return <div>Error: {this.state.error.message}</div>
         } else {
             return (
-                <div className="container">
+                <div>
                     <div className="header">
                         <h1>The Guardian News</h1>
                         <button onClick={this.handleRefreshClick.bind(this)}>Refresh</button>
                     </div>
-                    <ul className="list">
-                        {this.state.arrayOfArticles.map((item,index) => (
-                            <li key={index}>
-                                {item.webTitle}
-                            </li>
+                    <div>
+                        <ul className="list">
+                            { this.state.arrayOfArticles.map((item) => (
+                                <LiComponent item={item} arrayOfArticles={this.state.arrayOfArticles} />
                             ))}
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             );
         }

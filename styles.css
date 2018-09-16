@@ -45,8 +45,8 @@
     padding: 10px;
 }
 
-.accordion-body {
-    display: none;
+.panel {
+    background: none;
     border: 1px solid black;
 }
 
