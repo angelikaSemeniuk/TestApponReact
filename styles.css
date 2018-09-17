@@ -39,6 +39,7 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .accordion-header i {
@@ -47,14 +48,36 @@
 
 .panel {
     background: none;
-    border: 1px solid black;
 }
 
 .pagination {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }
+
+.pagination span {
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.pagination p {
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.pagination button {
+    padding: 10px;
+    border: 1px solid black;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 2px 5px grey;
+}
+
+
+
 
 
 

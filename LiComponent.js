@@ -19,7 +19,6 @@ export default class LiComponent extends React.Component {
 
     openAccordionBody (item, event) {
         const currentElement = event.currentTarget;
-        console.error("currentElement", currentElement);
         const url = item.apiUrl + "?show-blocks=body&api-key=64725228-5b31-4c1c-aba5-faa61edfb7be";
         fetch(url)
             .then((response) => {
@@ -59,7 +58,12 @@ export default class LiComponent extends React.Component {
             return (
                 <div>
                     <li key={this.props.item.toString()} aria-label={this.state.accordionBodyShown} onClick={this.openAccordionBody.bind(this, this.props.item)}>
-                        <div className="accordion-header">{this.props.item.webTitle}</div>
+                        <div className="accordion-header">
+                            {this.props.item.webTitle}
+                            {this.state.accordionBodyShown ?
+                                <i className="fa fa-caret-up"></i> :
+                                <i className="fa fa-caret-down"></i>}
+                        </div>
                         {this.state.accordionBodyShown &&
                             <div className="panel">
                                 <p dangerouslySetInnerHTML={{__html: this.state.articleInfo}}></p>

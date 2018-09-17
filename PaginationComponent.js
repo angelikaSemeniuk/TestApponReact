@@ -44,24 +44,17 @@ export default class PaginationComponent extends React.Component  {
     }
 
     render () {
-        if(this.props.currentPage === 1) {
-            return (
-                <div className="pagination">
-                    <button className="previousPage" disabled>Previous Page</button>
-                    <span className="currentPage" dangerouslySetInnerHTML={{__html: this.props.currentPage}}></span>
-                    <p className="numberOfPages" dangerouslySetInnerHTML={{__html: ' of ' + this.props.totalPages}}></p>
-                    <button className="nextPage" onClick={this.handleNextPage.bind(this, this.props.currentPage)}>Next Page</button>
-                </div>
-            );
-        } else {
-            return (
-                <div className="pagination">
-                    <button className="previousPage" onClick={this.handlePreviosPage.bind(this, this.props.currentPage)}>Previous Page</button>
-                    <span className="currentPage" dangerouslySetInnerHTML={{__html: this.props.currentPage}}></span>
-                    <p className="numberOfPages" dangerouslySetInnerHTML={{__html: ' of ' + this.props.totalPages}}></p>
-                    <button className="nextPage" onClick={this.handleNextPage.bind(this, this.props.currentPage)}>Next Page</button>
-                </div>
-            );
+        let previousPageButton = <button className="previousPage" disabled>Previous Page</button>;
+        if(this.props.currentPage !== 1) {
+            previousPageButton =  <button className="previousPage" onClick={this.handlePreviosPage.bind(this, this.props.currentPage)}>Previous Page</button>;
         }
+        return (
+            <div className="pagination">
+                {previousPageButton}
+                <span className="currentPage" dangerouslySetInnerHTML={{__html: this.props.currentPage}}></span>
+                <p className="numberOfPages" dangerouslySetInnerHTML={{__html: ' of ' + this.props.totalPages}}></p>
+                <button className="nextPage" onClick={this.handleNextPage.bind(this, this.props.currentPage)}>Next Page</button>
+            </div>
+        );
     }
 }

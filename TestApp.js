@@ -26,7 +26,6 @@ export default class TestApp extends React.Component {
                     this.totalPages = data.response.total;
                     this.updateArrayOfArticles(data.response.results);
                     this.updateCurrentPage(data.response.currentPage);
-                    console.error("totalPages", this.totalPages);
             },
                 (error) => {
                     this.setState({
